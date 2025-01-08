@@ -23,6 +23,19 @@ public class Produto {
     @NotNull
     private Integer quantidadeEmEstoque;
 
+    //Construtor sem Argumento para consultas.
+    public Produto() {
+    }
+
+    public Produto(Long id, String nome, Double preco, Integer quantidade, Integer quantidadeEmEstoque) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    //Getters e Setters.
     public Long getId() {
         return id;
     }

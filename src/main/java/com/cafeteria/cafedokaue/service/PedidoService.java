@@ -83,17 +83,21 @@ public class PedidoService {
         return pedidoRepository.save(pedido);
     }
 
+    //Retorna todos os pedidos.
     public List<Pedido> listarPedidos() {return pedidoRepository.findAll();}
 
+    //Busca pelo Id.
     public Pedido buscarPorId(Long pedidoId){
         Pedido pedidoEncontrado = pedidoRepository.findById(pedidoId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido não existe!"));
         System.out.println("SUCESSO AO BUSCAR PEDIDO");
         return pedidoEncontrado;
     }
 
+    //Busca todos pedido por Estado.
     public List<Pedido> buscarPorEstado(EstadoPedido estadoAtual){
         return pedidoRepository.findByEstadoAtual(estadoAtual);
     }
+
     //Altera o status do pedido.
     public Pedido aprovarPedido(Long pedidoId) {
         Pedido pedido = pedidoRepository.findById(pedidoId)

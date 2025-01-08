@@ -35,8 +35,7 @@ public class ProdutoService {
     }
 
     //Retorna a Lista de todos os produtos.
-    public List<Produto> verificarEstoque(){
-        List<Produto> ProdutosEncontrados = produtoRepository.findAll();
-        return ProdutosEncontrados;
+    public List<Produto> verificarEstoque() {
+        return produtoRepository.findAll(); // Certifique-se de que este método está funcionando.
     }
 }

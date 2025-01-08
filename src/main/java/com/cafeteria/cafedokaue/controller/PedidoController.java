@@ -15,33 +15,38 @@ public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
+    //Cria um Pedido (Não é possível adicionar nenhum produto no momento que cria o pedido).
     @PostMapping
     public Pedido criarPedido(@RequestBody Pedido pedido) {
         return pedidoService.criarPedido(pedido);
     }
 
+    //Adiciona somente um produto por vez a um pedido.
     @PostMapping("/{pedidoId}/produtos/{produtoId}")
     public Pedido adicionarProdutoAoPedido(@PathVariable Long pedidoId, @PathVariable Long produtoId,@RequestParam Integer quantidade) {
         return pedidoService.adicionarProdutoAoPedido(pedidoId, produtoId, quantidade);
     }
 
-
+    //Remove um produto por vez de um pedido.
     @PutMapping("/{pedidoId}/produtos/{produtoId}")
     public Pedido removerProdutoDoPedido(@PathVariable Long pedidoId, @PathVariable Long produtoId,@RequestParam Integer quantidade) {
         return pedidoService.removerProdutoDoPedido(pedidoId, produtoId, quantidade);
     }
 
+    //Lista todos os Pedidos (sem filtro).
     @GetMapping
     public List<Pedido> listarPedidos(){
         return pedidoService.listarPedidos();
     }
 
+    //Busca um pedido pelo Id.
     @GetMapping("/id/{pedidoId}")
     public Pedido buscarPorId(@PathVariable Long pedidoId){
         System.out.println("ID ENCONTRADO");
         return pedidoService.buscarPorId(pedidoId);
     }
 
+    //Busca pedidos pelo Estado Atual selecionado.
     @GetMapping("/estado/{estadoAtual}")
     public List<Pedido> buscarPorEstado(@PathVariable EstadoPedido estadoAtual){
         System.out.println("ESTADO ENCONTRADO");
